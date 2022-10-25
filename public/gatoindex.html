@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Render api</title>
+</head>
+
+<body>
+    <h1>Gatitos</h1>
+</body>
+<script>
+    const server = "http://localhost:8080/gatos"
+
+    async function setImage() {
+        const response = await fetch(server)
+        const data = await response.json()
+        data.forEach(element => {
+            const img = document.createElement("img");
+            img.src = element.url;
+            document.body.append(img)
+        });
+    }
+    setImage()
+</script>
+
+</html>
